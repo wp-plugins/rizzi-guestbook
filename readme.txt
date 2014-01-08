@@ -58,7 +58,7 @@ For a Demo, see the [plugin's homepage](http://jamrizzi.x10.bz/welcome/guestbook
 
 
 == Changelog ==
-= 2.0.2 (2014-01-06) =
+= 2.0.2 (2014-01-08) =
 * Fixed a minor bug
 
 = 2.0.1 (2014-01-06) =
