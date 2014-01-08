@@ -214,7 +214,8 @@ function vgb_get_sign_pg($opts)
    ?>
    <div id="gbSignWrap" class="page-nav">
     <form action="<?php echo get_option("siteurl")?>/wp-comments-post.php" method="post" id="commentform">
-     
+
+<hr>
      <?php if( $opts['disallowAnon'] && !$user->ID ) : 
      	_e('Sorry, but only registered users are allowed to sign this guestbook.<br />Please create a user account, or login to sign.',WPVGB_DOMAIN);
 	else: ?>
