@@ -3,7 +3,7 @@ Contributors: JamRizzi
 Tags: rizzi, rizzi-guestbook, guestbook, vipergb, viper guestbook, dmsguestbook, dms, guest, book
 Requires at least: 2.5
 Tested up to: 3.8
-Stable tag: 1.3.9
+Stable tag: 2.0.1
 
 Rizzi-Guestbook is the perfect guestbook solution for you. It is a modified and improved version of the popular
 WP-ViperGB plugin. The plugin's listing page has been beautifully redesigned, unnecessary features have been
