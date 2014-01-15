@@ -5,9 +5,7 @@ Requires at least: 2.5
 Tested up to: 3.8
 Stable tag: 2.0.2
 
-Rizzi-Guestbook is the perfect guestbook solution for you. It is a modified and improved version of the popular
-WP-ViperGB plugin. The plugin's listing page has been beautifully redesigned, unnecessary features have been
-removed to increase simplicity, and mobile support has been added.
+Rizzi-Guestbook is the perfect guestbook solution for you. It is simple to use, but does the job well.
 
 
 == Description ==
@@ -28,9 +26,10 @@ Features:
 * Create user-friendly guestbooks without writing a single line of code.
 * Lives in a standard WordPress page and uses comments for entries, so moderation and antispam functionality works as normal.
 * Two-View layout provides one view for submitting entries and another for reading them.
+* No annoying WEBSITE field.
 * Automatic paging of entries to customizable length.
 * Compatible with mobile themes.
-* No bloat: Uses existing WordPress faculties so no custom database tables are required.
+* No custom database tables are required.
 * Simplistic design makes it extremely user friendly.
 * Very easy to set up and administrate.
 
