@@ -221,7 +221,6 @@ function vgb_get_sign_pg($opts)
 	else: ?>
 	
      <!-- Name/Email/Homepage section -->
-<hr>
 <p><?php _e('Name', WPVGB_DOMAIN)?>:</td>
 
         <?php if($user->ID):?> <input type="text" name="author" id="author" value="<?php echo $user->display_name?>" disabled="disabled" size="30" maxlength="40" />

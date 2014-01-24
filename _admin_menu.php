@@ -70,7 +70,27 @@ function vgb_admin_page()
          <?php endif;?>
       </h2>
       
-      <?php _e('To add a Guestbook to your blog, simply create a new page, select it in the first combobox below, and click "Save."', WPVGB_DOMAIN) ?><br /><br />
+      <?php _e('
+<hr><center>
+<table border="0">
+   <tr><td>
+<h2>To help improve this plugin, click the donate button.</h2>
+   </td><td><br />
+<!-- PayPal Button -->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank"><input type="hidden" name="cmd" value="_donations" />
+<input type="hidden" name="business" value="PUVC5R8CCHQAN" />
+<input type="hidden" name="lc" value="US" />
+<input type="hidden" name="item_name" value="JamRizzi" />
+<input type="hidden" name="currency_code" value="USD" />
+<input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted" />
+<input type="image" alt="PayPal - The safer, easier way to pay online!" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" />
+<img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" border="0" /></form>
+<!-- End PayPal Button -->
+</td></tr></table>
+</center>
+<hr>
+<br />
+To add a Guestbook to your blog, simply create a new page, select it in the first combobox below, and click "Save."', WPVGB_DOMAIN) ?><br /><br />
         
       <?php if(!get_option($opt_vgb_hidesponsor)): ?>
         <!-- Sponsorship message *was* here, until Automattic demanded they be removed from all plugins - see http://gregsplugins.com/lib/2011/11/26/automattic-bullies/ -->

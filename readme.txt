@@ -2,8 +2,8 @@
 Contributors: JamRizzi
 Tags: rizzi, rizzi-guestbook, guestbook, vipergb, viper guestbook, dmsguestbook, dms, guest, book
 Requires at least: 2.5
-Tested up to: 3.8
-Stable tag: 2.0.2
+Tested up to: 3.8.1
+Stable tag: 2.1.1
 
 Rizzi-Guestbook is the perfect guestbook solution for you. It is simple to use, but does the job well.
 
@@ -26,10 +26,9 @@ Features:
 * Create user-friendly guestbooks without writing a single line of code.
 * Lives in a standard WordPress page and uses comments for entries, so moderation and antispam functionality works as normal.
 * Two-View layout provides one view for submitting entries and another for reading them.
-* No annoying WEBSITE field.
 * Automatic paging of entries to customizable length.
 * Compatible with mobile themes.
-* No custom database tables are required.
+* No bloat: Uses existing WordPress faculties so no custom database tables are required.
 * Simplistic design makes it extremely user friendly.
 * Very easy to set up and administrate.
 
@@ -57,6 +56,14 @@ For a Demo, see the [plugin's homepage](http://jamrizzi.x10.bz/welcome/guestbook
 
 
 == Changelog ==
+= 2.1.1 (2014-01-15) =
+* Tested with 3.8.1
+* Replaced advertisement with donate button.
+
+= 2.1.0 (2014-01-15) =
+* Fixed <hr> error on Sign Guestbook page
+* Added advertisement to help fund this project
+
 = 2.0.2 (2014-01-08) =
 * Fixed a minor bug
 
