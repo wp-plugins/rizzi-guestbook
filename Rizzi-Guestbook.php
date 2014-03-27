@@ -3,7 +3,7 @@
 Plugin Name: Rizzi-Guestbook
 Description: Rizzi-Guestbook is the perfect guestbook solution for you. It is a modified and improved version of the popular WP-ViperGB plugin. The plugin's listing page has been beautifully redesigned, unnecessary features have been removed to increase simplicity, and mobile support has been added.
 Author: JamRizzi
-Version: 2.2.0
+Version: 2.2.1
 Author URI: http://jamrizzi.x10.bz/
 Plugin URI: http://jamrizzi.x10.bz/projects/wordpress/plugins/rizzi-guestbook
 */
