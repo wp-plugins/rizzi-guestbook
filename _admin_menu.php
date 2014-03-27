@@ -99,7 +99,8 @@ To add a Guestbook to your blog, simply create a new page, select it in the firs
       
       <h4><?php _e('Main Settings', WPVGB_DOMAIN) ?>:</h4>
       <form name="formOptions" method="post" action="">
-        <?php _e('Guestbook Page', WPVGB_DOMAIN) ?>:
+
+        <?php _e('Guestbook Page', WPVGB_DOMAIN) ?><span style="word-spacing:9px;">:&nbsp;</span>
         <select style="width:150px;" name="<?php echo $opt_vgb_page?>">
           <?php
             $pages = get_pages(array('post_status'=>'publish,private'));  
@@ -109,7 +110,23 @@ To add a Guestbook to your blog, simply create a new page, select it in the firs
                echo '<option value="'.$page->ID.'"'. ($page->ID==$vgb_page?' selected':'').'>'.$page->post_title.'</option>'."\n";
           ?>
         </select><br />
-        
+
+
+        <?php _e('Display Date/Time', WPVGB_DOMAIN) ?><span style="word-spacing:9px">:</span>
+        <select style="width:150px;" name="<?php echo $opt_vgb_style?>">
+          <?php
+             $stylesDir = opendir(dirname(__FILE__) . "/display/time_settings");
+             while ($file = readdir($stylesDir))
+             {
+                if( ($fileEnding = strpos($file, '.css'))===FALSE ) continue;
+                $styleName = substr($file, 0, $fileEnding);
+                echo '<option value="'.$styleName.'"'. ($styleName==get_option($opt_vgb_style)?' selected':'').'>'.$styleName.'</option>'."\n";
+             }
+             closedir($stylesDir);
+          ?>
+        </select><br />
+
+
         <h4><?php _e('Extra Settings', WPVGB_DOMAIN)?>:</h4>
         <input type="text" size="3" name="<?php echo $opt_vgb_items_per_pg?>" value="<?php echo get_option($opt_vgb_items_per_pg) ?>" /> <?php _e('Entries Per Page', WPVGB_DOMAIN)?><br />
 		<input type="checkbox" name="<?php echo $opt_vgb_digg_pagination?>" value="1" <?php echo get_option($opt_vgb_digg_pagination)?'checked="checked"':''?> /> <?php _e('Use Digg-style pagination', WPVGB_DOMAIN)?><br />

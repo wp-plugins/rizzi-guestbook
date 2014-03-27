@@ -3,7 +3,7 @@ Contributors: JamRizzi
 Tags: rizzi, rizzi-guestbook, guestbook, vipergb, viper guestbook, dmsguestbook, dms, guest, book
 Requires at least: 2.5
 Tested up to: 3.8.1
-Stable tag: 2.1.1
+Stable tag: 2.2.0
 
 Rizzi-Guestbook is the perfect guestbook solution for you. It is simple to use, but does the job well.
 
@@ -56,6 +56,11 @@ For a Demo, see the [plugin's homepage](http://jamrizzi.x10.bz/welcome/guestbook
 
 
 == Changelog ==
+= 2.2.0 (2014-03-26) =
+* Tested with 3.8.1
+* Added an option to add a date stamp.
+* Changed "Text:" to "Message:"
+
 = 2.1.1 (2014-01-15) =
 * Tested with 3.8.1
 * Replaced advertisement with donate button.

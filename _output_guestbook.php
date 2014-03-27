@@ -177,6 +177,13 @@ function vgb_get_listing_pg($opts)
        else                                  echo "<i><b>".__('This entry is awaiting moderation',WPVGB_DOMAIN)."</b></i>";
        ?>
 
+<div class="rg_time">
+<?php echo get_comment_date(__('F j, Y',WPVGB_DOMAIN))?>
+<?php echo '&nbsp;-&nbsp;'?>
+<?php echo get_comment_time(__('g:i A',WPVGB_DOMAIN))?>
+<?php //echo get_comment_date('l')?>
+</div>
+
 <hr>
 
     <?php endforeach; ?>
@@ -228,7 +235,7 @@ function vgb_get_sign_pg($opts)
         <?php endif; ?>
         <?php if(!$opts['disallowAnon']) _e('(required)', WPVGB_DOMAIN); ?></p>
 
-<p><?php _e('Email', WPVGB_DOMAIN)?>:</td>
+<div class="rg_email"><p><?php _e('Email', WPVGB_DOMAIN)?>:</td>
 
         <?php if($user->ID):?> <input type="text" name="email" id="email" value="<?php echo $user->user_email?>" disabled="disabled" size="30" maxlength="40" />
         <?php else:         ?> <input type="text" name="email" id="email" value="<?php echo $commenter['comment_author_email']?>" size="30" maxlength="40" />
@@ -242,13 +249,14 @@ function vgb_get_sign_pg($opts)
            global $post;
            do_action('comment_form', $post->ID);
            ?>
+</div>
 
      <?php if( $user->ID && !$opts['disallowAnon'] ) echo __("*If you'd like to customize these values, please ", WPVGB_DOMAIN) . "<b><a href=\"". wp_logout_url( $_SERVER['REQUEST_URI'] ) . "\">" . __("Logout", WPVGB_DOMAIN) . "</a></b>."; ?>
      <!-- End Name/Email section -->
      
      <!-- Text section -->
      <div id="gbSignText">
-       <?php _e('Text', WPVGB_DOMAIN)?>:<br />
+       <?php _e('Message', WPVGB_DOMAIN)?>:<br />
        <textarea name="comment" id="comment" rows="12" cols="45"></textarea><br />
        <input style="width:100px;" name="submit" type="submit" id="submit" value="<?php _e('Send', WPVGB_DOMAIN)?>" />
        <input type="hidden" name="comment_post_ID" value="<?php echo $GLOBALS['id']?>" />
