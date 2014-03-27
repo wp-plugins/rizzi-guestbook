@@ -24,6 +24,7 @@ removed to increase simplicity, and mobile support has been added.
 Features:
 
 * Create user-friendly guestbooks without writing a single line of code.
+* Option to add a date stamp so you know when people signed your guestbook.
 * Lives in a standard WordPress page and uses comments for entries, so moderation and antispam functionality works as normal.
 * Two-View layout provides one view for submitting entries and another for reading them.
 * Automatic paging of entries to customizable length.
