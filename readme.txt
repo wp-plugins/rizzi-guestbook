@@ -60,12 +60,12 @@ For a demo, click [HERE](http://jamrizzi.com/guestbook).
  
 == Changelog ==
 = 2.3.0 (2014-09-06) =
-*Tested with 4.0
-*Fixed date stamp
-*Fixed CSS errors
-*Modified admin page
-*Improved sign guestbook page
-*Modified listings page
+* Tested with 4.0
+* Fixed date stamp
+* Fixed CSS errors
+* Modified admin page
+* Improved sign guestbook page
+* Modified listings page
  
 = 2.2.1 (2014-03-26) =
 * Tested with 3.8.1
