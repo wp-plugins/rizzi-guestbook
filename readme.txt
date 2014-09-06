@@ -45,7 +45,7 @@ For a demo, click [HERE](http://jamrizzi.com/guestbook).
  
 == Installation ==
 
-Because this plugin is based off of the WP-ViperGB plugin, make sure you uninstall Wp-ViperGB or there will be conflicts.
+Because this plugin is based off of the WP-ViperGB plugin, make sure WP-ViperGB is uninstalled or there will be conflicts.
  
 1. Download the most recent version of [Rizzi-Guestbook](http://jamrizzi.x10.bz/projects/wordpress/plugins/rizzi-guestbook/), unzip it, and upload the extracted files to your `/wp-content/plugins` directory.
  
