@@ -2,9 +2,7 @@
 /*
 Plugin Name: Rizzi Guestbook
 Description: Rizzi Guestbook is a guestbook that is simple to administrate and easy to use, while still maintaining
-the necessary functionality a guestbook needs.  It is probably the easiest guestbook to use ever created. This guestbook
-utilizes the built in comment feature of WordPress which makes the management of your guestbook a breeze.  It
-also works great as a testimonial page.
+the necessary functionality a guestbook needs.
 Author: JamRizzi
 Version: 2.3.0
 Author URI: http://jamrizzi.com
