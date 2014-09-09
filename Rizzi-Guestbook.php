@@ -4,7 +4,7 @@ Plugin Name: Rizzi Guestbook
 Description: Rizzi Guestbook is a guestbook that is simple to administrate and easy to use, while still maintaining
 the necessary functionality a guestbook needs.
 Author: JamRizzi
-Version: 2.3.1
+Version: 2.3.2
 Author URI: http://jamrizzi.com
 Plugin URI: http://jamrizzi.com/wordpress/plugins/rizzi-guestbook
 */
@@ -31,7 +31,7 @@ Plugin URI: http://jamrizzi.com/wordpress/plugins/rizzi-guestbook
 global $vgb_name, $vgb_homepage, $vgb_version;
 $vgb_name               = "Rizzi Guestbook";
 $vgb_homepage           = "http://jamrizzi.com/wordpress/plugins/rizzi-guestbook";
-$vgb_version            = "2.3.1";
+$vgb_version            = "2.3.2";
 
 //Our plugin options
 global $opt_vgb_page, $opt_vgb_style, $opt_vgb_items_per_pg, $opt_vgb_reverse;
@@ -102,7 +102,7 @@ add_action('wp_enqueue_scripts', 'vgb_enqueue_styles');
 function vgb_enqueue_styles()
 {
     global $vgb_version, $opt_vgb_style;
-    wp_enqueue_style('WP-ViperGB-Default', vgb_get_data_url().'styles/Just&nbspThe&nbspPost.css', array(), $vgb_version );
+    wp_enqueue_style('WP-ViperGB-Default', vgb_get_data_url().'styles/Default.css', array(), $vgb_version );
     $currentStyle = get_option($opt_vgb_style);
     if( $currentStyle != 'Default' )
         wp_enqueue_style('WP-ViperGB-'.$currentStyle, vgb_get_data_url().'styles/'.$currentStyle.".css", array('WP-ViperGB-Default'), $vgb_version );
