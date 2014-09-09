@@ -3,7 +3,7 @@ Contributors: jamrizzi
 Tags: rizzi, rizzi-guestbook, guestbook, vipergb, viper guestbook, dmsguestbook, dms, guest, book, testimony, testimonial, sign, signature
 Requires at least: 2.5
 Tested up to: 4.0
-Stable tag: 2.3.2
+Stable tag: 2.3.3
  
 Rizzi Guestbook is a guestbook that is simple to administrate and easy to use, while still maintaining
 the necessary functionality a guestbook needs.  It is probably the easiest guestbook to use ever created. This guestbook
@@ -61,6 +61,9 @@ Because this plugin is based off of the WP-ViperGB plugin, make sure WP-ViperGB 
  
  
 == Changelog ==
+= 2.3.3 (2014-09-09) =
+* Fixed date bug
+
 = 2.3.2 (2014-09-09) =
 * Fixed date bug
 
