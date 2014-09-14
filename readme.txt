@@ -38,7 +38,7 @@ Features:
 * Simplistic design makes it extremely user friendly.
 * Very easy to set up and administrate.
  
-For a demo, click [HERE](http://jamrizzi.com/guestbook).
+For a demo, click [HERE](http://jamrizzi.com/about/testimonials).
 
 *At this point, all the links to my website do not work because it is currently under construction. Thank you for your patience.
  
