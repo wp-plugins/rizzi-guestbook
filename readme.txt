@@ -6,26 +6,19 @@ Requires at least: 2.5
 Tested up to: 4.1.1
 Stable tag: 3.0.0
  
-Rizzi Guestbook the simplest guestbook to administrate, but still maintains the necessary functionality a guestbook needs.  It is the easiest to use guestbook ever created. This guestbook
-utilizes the built in comment feature of WordPress which makes the management of your guestbook a breeze.  It
-also works great as a testimonial page.
+Rizzi Guestbook definitely the easiest to use guestbook ever created, both on the administrative and user side.  The purpose for this plugin was to create a guestbook that is simple to administrate and easy to use, while still maintaining the necessary functionality a guestbook needs.
  
  
 == Description ==
 
-[Get Rizzi Guestbook Pro](http://software.jamrizzi.com/store/products/rizzi-guestbook/).
+Get [Rizzi Guestbook Pro](http://software.jamrizzi.com/store/products/rizzi-guestbook/).
+
+Rizzi Guestbook support officially managed at [JamRizzi Support](http://support.jamrizzi.com).
  
-There are several guestbook options for WordPress, but many of them are
-extremely complicated, not user friendly, have incompatibility issues, and the list goes on and on.
-**Rizzi Guestbook is different.** The purpose for this plugin was to create a
-Guestbook that is simple to administrate and easy to use, while still maintaining
-the necessary functionality a Guestbook needs. It is definitely the easiest to use guestbook ever created,
-both on the administrative and user side.  It
-utilizes the built in comment feature of WordPress which makes the management of your guestbook a breeze.
-I hope you find this Guestbook useful.
+There are several guestbook options for WordPress, but many of them are extremely complicated, not user friendly, have incompatibility issues, and the list goes on and on.  **Rizzi Guestbook is different.** The purpose for this plugin was to create a guestbook that is simple to administrate and easy to use, while still maintaining the necessary functionality a guestbook needs. It is definitely the easiest to use guestbook ever created, both on the administrative and user side.  It utilizes the built in comment feature of WordPress which makes the management of your guestbook a breeze.  I hope you find this guestbook useful.
 
 Features:
- 
+
 * Create user-friendly guestbooks without writing a single line of code.
 * Allow anyone to sign your guestbook or limit it just to users.
 * Lives in a standard WordPress page and uses comments for entries, so moderation and antispam functionality works as normal.
@@ -37,6 +30,7 @@ Features:
 * Very easy to set up and administrate.
 
 Pro Features:
+
 * Add a date stamp so you know when people signed your guestbook.  There are multiple date stamp formats to choose from.
 * Choose how many entries are displayed on each page.
 * Option to list entries from oldest to newest.
@@ -46,7 +40,7 @@ Pro Features:
 * Remove *Powered by JamRizzi Technologies* stamp.
 * Hide advertisements.
 
-[Get Rizzi Guestbook Pro](http://software.jamrizzi.com/store/products/rizzi-guestbook/).
+Get [Rizzi Guestbook Pro](http://software.jamrizzi.com/store/products/rizzi-guestbook/).
 
 For a demo, click [HERE](http://demo.jamrizzi.com/rizzi-guestbook).
 
@@ -158,7 +152,12 @@ Make sure the WP-ViperGB plugin is not installed on your site or there will be c
 == Screenshots ==
 
 1. **Admin Page** - Simple to use admin page gives you powerful options for your guestbook.
-2. **Manage Entries** - Rizzi guestbook utilizes the built in comment feature of WordPress allowing the guestbook management to be simple and efficient.
+2. **Manage Entries** - Rizzi Guestbook utilizes the built in comment feature of WordPress allowing the guestbook management to be simple and efficient.
 3. **Sign Guestbook** - On the Sign Guestbook page, users sign the guestbook.
 4. **Show Guestbook** - On the Show Guestbook page, visitors can see all the posts to the guestbook.
 5. **Captcha Support** - Supports Google's No Captcha reCaptcha.
+
+
+== Support ==
+
+Rizzi Guestbook support officially managed at [JamRizzi Support](http://support.jamrizzi.com).
