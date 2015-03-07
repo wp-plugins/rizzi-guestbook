@@ -6,7 +6,7 @@ Requires at least: 2.5
 Tested up to: 4.1.1
 Stable tag: 3.0.0
  
-Rizzi Guestbook definitely the easiest to use guestbook ever created, both on the administrative and user side.  The purpose for this plugin was to create a guestbook that is simple to administrate and easy to use, while still maintaining the necessary functionality a guestbook needs.
+Rizzi Guestbook is the easiest guestbook ever created, both on the administrative and user side, while still maintaining powerful functionality.
  
  
 == Description ==
