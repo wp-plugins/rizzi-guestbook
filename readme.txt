@@ -1,6 +1,6 @@
 === Plugin Name ===
 Plugin Name: Rizzi Guestbook
-Contributors: JamRizzi Technologies
+Contributors: jamrizzi
 Tags: rizzi, rizzi-guestbook, guestbook, vipergb, viper guestbook, dmsguestbook, dms, guest, book, testimony, testimonial, sign, signature
 Requires at least: 2.5
 Tested up to: 4.1.1
