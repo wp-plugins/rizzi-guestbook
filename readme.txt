@@ -53,9 +53,7 @@ Make sure the WP-ViperGB plugin is not installed on your site or there will be c
  
 2. Login to your WordPress admin panel.
 
-3a. Upload the zip file to your `/wp-content/plugins` directory and unzip it or . . .
-
-3b. Navigate to PLUGINS -> ADD NEW -> UPLOAD PLUGIN, and upload and install the zip file.
+3. Navigate to PLUGINS -> ADD NEW -> UPLOAD PLUGIN, and upload and install the zip file, or upload the zip file to your `/wp-content/plugins` directory and unzip it.
 
 4. Activate the plugin.
  
@@ -65,9 +63,9 @@ Make sure the WP-ViperGB plugin is not installed on your site or there will be c
  
 7. Use the Guestbook Page dropdown to select the Page you created above.
  
-8. Click "Save Settings", and you're done! You can now enjoy your new Guestbook.
+8. Click "Save Settings", and you're done! You can now enjoy your new Rizzi Guestbook.
 
-[Get Rizzi Guestbook Pro](http://software.jamrizzi.com/store/products/rizzi-guestbook/).
+Get [Rizzi Guestbook Pro](http://software.jamrizzi.com/store/products/rizzi-guestbook/).
  
  
 == Changelog ==
@@ -156,8 +154,3 @@ Make sure the WP-ViperGB plugin is not installed on your site or there will be c
 3. **Sign Guestbook** - On the Sign Guestbook page, users sign the guestbook.
 4. **Show Guestbook** - On the Show Guestbook page, visitors can see all the posts to the guestbook.
 5. **Captcha Support** - Supports Google's No Captcha reCaptcha.
-
-
-== Support ==
-
-Rizzi Guestbook support officially managed at [JamRizzi Support](http://support.jamrizzi.com).
