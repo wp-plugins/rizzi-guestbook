@@ -6,7 +6,7 @@ Requires at least: 2.5
 Tested up to: 4.1.1
 Stable tag: 3.0.0
  
-Rizzi Guestbook is the easiest guestbook ever created, both on the administrative and user side, while still maintaining powerful functionality.
+Create a stunning guestbook or testimonial page using the built in WordPress comment system.
  
  
 == Description ==
