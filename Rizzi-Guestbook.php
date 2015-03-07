@@ -1,17 +1,16 @@
 <?php
 /*
 Plugin Name: Rizzi Guestbook
-Description: Rizzi Guestbook is a guestbook that is simple to administrate and easy to use, while still maintaining
-the necessary functionality a guestbook needs.
-Author: JamRizzi
-Version: 2.3.3
+Description: Rizzi Guestbook is the simplest guestbook to administrate, but still maintains the necessary functionality a guestbook needs. &nbsp;Upgrade to <a href='http://software.jamrizzi.com/store/products/rizzi-guestbook/'>Rizzi Guestbook Pro</a>.
+Author: JamRizzi Technologies
+Version: 3.0.0
 Author URI: http://jamrizzi.com
-Plugin URI: http://jamrizzi.com/wordpress/plugins/rizzi-guestbook
+Plugin URI: https://wordpress.org/plugins/rizzi-guestbook/
 */
 
 
 /*
- * Copyright 2014 JamRizzi (email: info@jamrizzi.com)
+ * Copyright 2015 JamRizzi Technologies (email: info@jamrizzi.com)
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -31,10 +30,10 @@ Plugin URI: http://jamrizzi.com/wordpress/plugins/rizzi-guestbook
 global $vgb_name, $vgb_homepage, $vgb_version;
 $vgb_name               = "Rizzi Guestbook";
 $vgb_homepage           = "http://jamrizzi.com/wordpress/plugins/rizzi-guestbook";
-$vgb_version            = "2.3.3";
+$vgb_version            = "3.0.0";
 
 //Our plugin options
-global $opt_vgb_page, $opt_vgb_style, $opt_vgb_items_per_pg, $opt_vgb_reverse;
+global $opt_vgb_page, $opt_vgb_style, $opt_vgb_items_per_pg, $opt_vgb_reverse, $opt_rgb_homepage_field, $opt_rgb_captcha_key, $opt_rgb_show_powered_by, $opt_rgb_sign_page, $opt_rgb_show_page, $opt_rgb_use_captcha, $rgb_hide_value_section;
 global $opt_vgb_allow_upload, $opt_vgb_allow_upload, $opt_vgb_max_upload_siz;
 global $opt_vgb_no_anon_signers;
 global $opt_vgb_show_browsers, $opt_vgb_show_flags, $opt_vgb_show_cred_link;
@@ -43,6 +42,13 @@ $opt_vgb_page           = 'vgb_page';
 $opt_vgb_style          = 'vgb_style';
 $opt_vgb_items_per_pg   = 'vgb_items_per_pg';
 $opt_vgb_reverse        = 'vgb_reverse';
+$opt_rgb_homepage_field = 'rgb_homepage_field';
+$rgb_hide_value_section = 'hide_value_section';
+$opt_rgb_use_captcha    = 'rgb_use_captcha';
+$opt_rgb_sign_page      = 'rgb_sign_page';
+$opt_rgb_show_page      = 'rgb_show_page';
+$opt_rgb_show_powered_by = 'rgb_show_powered_by';
+$opt_rgb_captcha_key    = 'rgb_captcha_key';
 $opt_vgb_allow_upload   = 'vgb_allow_upload';
 $opt_vgb_max_upload_siz = 'vgb_max_upload_siz';
 $opt_vgb_no_anon_signers= 'vgb_no_anon_signers';
@@ -81,7 +87,8 @@ function vgb_replace_content($content)
                                   'showFlags'    => get_option($opt_vgb_show_flags),
                                   'showCredLink' => get_option($opt_vgb_show_cred_link),
 								  'disallowAnon' => get_option($opt_vgb_no_anon_signers),
-								  'diggPagination'=>get_option($opt_vgb_digg_pagination)));                                         
+								  'diggPagination'=>get_option($opt_vgb_digg_pagination)));
+                                        
 }
 
 
@@ -116,5 +123,34 @@ function comment_img_shortcode($content)
     return preg_replace('/\[img=?\]*(.*?)(\[\/img)?\]/e', '"<img src=\"$1\" class=\"ecu_images\" alt=\"" . basename("$1") . "\" />"', $content);
 }
 
+
+
+
+add_action( 'wp_enqueue_scripts', 'safely_add_stylesheet' );
+function safely_add_stylesheet() {        
+    wp_enqueue_style( 'prefix-style', plugins_url('styles/style.css', __FILE__) );
+}
+
+add_filter('admin_footer_text', 'remove_footer_admin'); //change admin footer text
+function remove_footer_admin () {
+echo "<i>Thank you for creating with <a href='http://jamrizzi.com' target='_blank'>JamRizzi Technologies</a>.</i>";
+}
+
+function showMessage($message, $errormsg = false)
+{
+	if ($errormsg) {
+		echo '<div id="message" class="error">';
+	}
+	else {
+		echo '<div id="message" class="updated fade">';
+	}
+	echo "<p><strong>$message</strong></p></div>";
+} 
+ 
+function showAdminMessages()
+{
+    showMessage("Upgrade to <a href='http://software.jamrizzi.com/store/products/rizzi-guestbook/' target='_blank'>Rizzi Guestbook Pro</a>.", true);
+}
+add_action('admin_notices', 'showAdminMessages');
 
 ?>

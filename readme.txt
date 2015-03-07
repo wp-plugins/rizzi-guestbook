@@ -1,34 +1,32 @@
 === Plugin Name ===
-Contributors: jamrizzi
+Plugin Name: Rizzi Guestbook
+Contributors: JamRizzi Technologies
 Tags: rizzi, rizzi-guestbook, guestbook, vipergb, viper guestbook, dmsguestbook, dms, guest, book, testimony, testimonial, sign, signature
 Requires at least: 2.5
-Tested up to: 4.0
-Stable tag: 2.3.3
+Tested up to: 4.1.1
+Stable tag: 3.0.0
  
-Rizzi Guestbook is a guestbook that is simple to administrate and easy to use, while still maintaining
-the necessary functionality a guestbook needs.  It is probably the easiest guestbook to use ever created. This guestbook
+Rizzi Guestbook the simplest guestbook to administrate, but still maintains the necessary functionality a guestbook needs.  It is the easiest to use guestbook ever created. This guestbook
 utilizes the built in comment feature of WordPress which makes the management of your guestbook a breeze.  It
 also works great as a testimonial page.
  
  
 == Description ==
+
+[Get Rizzi Guestbook Pro](http://software.jamrizzi.com/store/products/rizzi-guestbook/).
  
 There are several guestbook options for WordPress, but many of them are
 extremely complicated, not user friendly, have incompatibility issues, and the list goes on and on.
 **Rizzi Guestbook is different.** The purpose for this plugin was to create a
 Guestbook that is simple to administrate and easy to use, while still maintaining
-the necessary functionality a Guestbook needs. It is probably the easiest guestbook to use ever created.
-I hope you find this Guestbook useful.
- 
-Rizzi Guestbook is a modified and improved version of the WP-ViperGB plugin.
-The plugin's listing page was beautifully redesigned, unnecessary features were
-removed to increase simplicity, mobile support was added, and many more display features were implemented. It
+the necessary functionality a Guestbook needs. It is definitely the easiest to use guestbook ever created,
+both on the administrative and user side.  It
 utilizes the built in comment feature of WordPress which makes the management of your guestbook a breeze.
+I hope you find this Guestbook useful.
 
 Features:
  
 * Create user-friendly guestbooks without writing a single line of code.
-* Option to add a date stamp so you know when people signed your guestbook.
 * Allow anyone to sign your guestbook or limit it just to users.
 * Lives in a standard WordPress page and uses comments for entries, so moderation and antispam functionality works as normal.
 * Two-View layout provides one view for submitting entries and another for reading them.
@@ -37,30 +35,55 @@ Features:
 * No custom database tables are required.
 * Simplistic design makes it extremely user friendly.
 * Very easy to set up and administrate.
- 
-For a demo, click [HERE](http://jamrizzi.com/about/testimonials).
 
-*At this point, all the links to my website do not work because it is currently under construction. Thank you for your patience.
- 
- 
+Pro Features:
+* Add a date stamp so you know when people signed your guestbook.  There are multiple date stamp formats to choose from.
+* Choose how many entries are displayed on each page.
+* Option to list entries from oldest to newest.
+* Just show the message box for users that are already logged in.
+* Change the page names.
+* Add Google's new No Captcha reCaptcha.
+* Remove *Powered by JamRizzi Technologies* stamp.
+* Hide advertisements.
+
+[Get Rizzi Guestbook Pro](http://software.jamrizzi.com/store/products/rizzi-guestbook/).
+
+For a demo, click [HERE](http://demo.jamrizzi.com/rizzi-guestbook).
+
+
 == Installation ==
 
-Because this plugin is based off of the WP-ViperGB plugin, make sure WP-ViperGB is uninstalled or there will be conflicts.
+Make sure the WP-ViperGB plugin is not installed on your site or there will be conflicts.
  
-1. Download the most recent version of [Rizzi-Guestbook](http://jamrizzi.x10.bz/projects/wordpress/plugins/rizzi-guestbook/), unzip it, and upload the extracted files to your `/wp-content/plugins` directory.
+1. Download the most recent version of [Rizzi-Guestbook](http://software.jamrizzi.com/store/products/rizzi-guestbook/).
  
-2. Login to your WordPress admin panel and activate the plugin.
+2. Login to your WordPress admin panel.
+
+3a. Upload the zip file to your `/wp-content/plugins` directory and unzip it or . . .
+
+3b. Navigate to PLUGINS -> ADD NEW -> UPLOAD PLUGIN, and upload and install the zip file.
+
+4. Activate the plugin.
  
-3. Create a new page.
+5. Create a new page.
  
-4. Navigate to Settings -> Rizzi Guestbook.
+6. Navigate to SETTINGS -> RIZZI GUESTBOOK.
  
-5. Use the provided dropdown to select the Page you created above.
+7. Use the Guestbook Page dropdown to select the Page you created above.
  
-6. Click "Save," and you're done! You can now enjoy your new Guestbook.
+8. Click "Save Settings", and you're done! You can now enjoy your new Guestbook.
+
+[Get Rizzi Guestbook Pro](http://software.jamrizzi.com/store/products/rizzi-guestbook/).
  
  
 == Changelog ==
+= 3.0.0 (2015-03-06) =
+* Complete New Design
+* Added Google's No Captcha reCaptcha
+* Added option to change page names
+* Added multiple date stamp formats
+* Fixed several bugs
+
 = 2.3.3 (2014-09-09) =
 * Fixed date bug
 
@@ -138,3 +161,4 @@ Because this plugin is based off of the WP-ViperGB plugin, make sure WP-ViperGB 
 2. **Manage Entries** - Rizzi guestbook utilizes the built in comment feature of WordPress allowing the guestbook management to be simple and efficient.
 3. **Sign Guestbook** - On the Sign Guestbook page, users sign the guestbook.
 4. **Show Guestbook** - On the Show Guestbook page, visitors can see all the posts to the guestbook.
+5. **Captcha Support** - Supports Google's No Captcha reCaptcha.

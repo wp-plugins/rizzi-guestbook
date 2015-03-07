@@ -38,7 +38,6 @@ function vgb_GetGuestbook( $opts=array() )
 /******************************IMPLEMENTATION************************************/
 /********************************************************************************/
 
-
 //PHP Arguments
 define('VB_SIGN_PG_ARG', 'sign');       //"Sign" page (vs "Listing" page)
 define('VB_PAGED_ARG', 'cpage');        //Paged Comments pagenumber
@@ -74,8 +73,29 @@ function vgb_get_current_page_num()
 /**
   * Get the header: Show Guestbook | Sign Guestbook, and *maybe* paged nav links
   */
+
 function vgb_get_header( $itemTotal, $entriesPerPg, $diggPagination )
 {
+    global $wpdb;
+    $rgb_sign_page_name = $wpdb->get_row("SELECT * FROM $wpdb->options WHERE option_name = 'rgb_sign_page'", ARRAY_A);
+    $rgb_sign_page_value = $rgb_sign_page_name['option_value'];
+
+    global $wpdb;
+    $rgb_show_page_name = $wpdb->get_row("SELECT * FROM $wpdb->options WHERE option_name = 'rgb_show_page'", ARRAY_A);
+    $rgb_show_page_value = $rgb_show_page_name['option_value'];
+
+    if (true) {
+        $rgb_show_page = "Show Guestbook";
+    } else {
+        $rgb_show_page = $rgb_show_page_value;
+    }
+
+    if (true) {
+        $rgb_sign_page = "Sign Guestbook";
+    } else {
+        $rgb_sign_page = $rgb_sign_page_value;
+    }
+
     //Comment
     global $vgb_name, $vgb_version;
     $retVal = "<!-- $vgb_name v$vgb_version -->\n";
@@ -84,12 +104,12 @@ function vgb_get_header( $itemTotal, $entriesPerPg, $diggPagination )
     $isListingPg = vgb_is_listing_pg();
     $retVal .= '<div id="gbHeader">';
     $retVal .= '<div id="gbNavLinks">';
-    if( !$isListingPg ) $retVal .= "<a href=\"".get_permalink()."\">";
-    $retVal .= __('Show Guestbook', WPVGB_DOMAIN);
+    if( !$isListingPg ) $retVal .= "<a href=\"".get_permalink()."\" target='_self'>";
+    $retVal .= __($rgb_show_page, WPVGB_DOMAIN);
     if( !$isListingPg ) $retVal .= "</a>";
     $retVal .= " | ";
-    if( $isListingPg ) $retVal .= "<a href=\"".htmlspecialchars(add_query_arg(VB_SIGN_PG_ARG, 1))."\">";
-    $retVal .= __('Sign Guestbook', WPVGB_DOMAIN);
+    if( $isListingPg ) $retVal .= "<a href=\"".htmlspecialchars(add_query_arg(VB_SIGN_PG_ARG, 1))."\" target='_self'>";
+    $retVal .= __($rgb_sign_page, WPVGB_DOMAIN);
     if( $isListingPg ) $retVal .= "</a>";
     $retVal .= "</div>";
 
@@ -154,10 +174,14 @@ function vgb_get_listing_pg($opts)
     echo vgb_get_header($commentTotal, $opts['entriesPerPg'], $opts['diggPagination']);
     
     //Check for "no entries"
-    if( $commentTotal == 0 ):
+    if( $commentTotal == 0 ) {
         echo '<div id="gbNoEntriesWrap">
              <hr>' . __('No entries yet', WPVGB_DOMAIN) . '. &nbsp;Be the first to sign the Guestbook.<hr></div>';
-    else:
+        if(true) {
+          echo "Powered by <b><a href='http://software.jamrizzi.com/store/products/rizzi-guestbook/' target='_blank'>Rizzi Guestbook</a></b>.<br />&nbsp;";
+        }
+    }
+    else {
     
     //Take a SLICE of the comments array corresponding to the current page
     $curPage = vgb_get_current_page_num();
@@ -170,44 +194,30 @@ function vgb_get_listing_pg($opts)
     <div id="gbEntriesWrap">
     <?php foreach( $comments as $comment ): ?>
 
-<b><?php echo $comment->comment_author?></b>&nbsp;<?php edit_comment_link('(Edit)', '');?>
+<b><?php echo $comment->comment_author?></b>&nbsp;<?php edit_comment_link('<i><small>Edit</small></i>', '');?>
 
 <?php
        if( $comment->comment_approved == 1 ) comment_text();
-       else                                  echo "<i><b>".__('This entry is awaiting moderation',WPVGB_DOMAIN)."</b></i>";
+       else                                  echo __('<br />This entry is awaiting moderation.<br /><br />',WPVGB_DOMAIN);
        ?>
-
-<div class="rg_time">
-<?php echo get_comment_date(__('F j, Y',WPVGB_DOMAIN))?>
-<?php echo '&nbsp;-&nbsp;'?>
-<?php echo get_comment_time(__('g:i A',WPVGB_DOMAIN))?>
-<?php //echo get_comment_date('l')?>
-</div>
 
 <hr>
 
     <?php endforeach; ?>
-</div>
 
-
-
-
-
-
-
-<!--
-        This is a free version of <b><a href="http://jamrizzi.com/wordpress/plugins/rizzi-guestbook" target="_blank">Rizzi Guestbook</a></b>.
--->
-
-
-
-
-
+<?php
+    global $wpdb;
+    $rgb_show_powered_by_name = $wpdb->get_row("SELECT * FROM $wpdb->options WHERE option_name = 'rgb_show_powered_by'", ARRAY_A);
+    $rgb_show_powered_by_value = $rgb_show_powered_by_name['option_value'];
+    if(true) {
+      echo "Powered by <b><a href='http://software.jamrizzi.com/store/products/rizzi-guestbook/' target='_blank'>Rizzi Guestbook</a></b>.<br />&nbsp;";
+    }
+?>
 
 <?php
     
     //if( $commentTotal == 0 ):
-    endif;
+}
     
     //Stop capturing output and return
     $output_string=ob_get_contents();
@@ -221,6 +231,17 @@ function vgb_get_listing_pg($opts)
 /*************************************************************************/
 function vgb_get_sign_pg($opts)
 {
+    //Get the captcha key
+    global $wpdb;
+    $rgb_captcha_key_name = $wpdb->get_row("SELECT * FROM $wpdb->options WHERE option_name = 'rgb_captcha_key'", ARRAY_A);
+    $rgb_captcha_key_value = $rgb_captcha_key_name['option_value'];
+
+    //Check captcha settings
+    global $wpdb;
+    $rgb_use_captcha_name = $wpdb->get_row("SELECT * FROM $wpdb->options WHERE option_name = 'rgb_use_captcha'", ARRAY_A);
+    $rgb_use_captcha_value = $rgb_use_captcha_name['option_value'];
+
+
     //Get the current user (if logged in)
     $user = wp_get_current_user();
     if ( empty( $user->display_name ) ) $user->display_name=$user->user_login;
@@ -236,8 +257,20 @@ function vgb_get_sign_pg($opts)
     
     //And output the page!
    ?>
+
+
    <div id="gbSignWrap" class="page-nav">
-    <form action="<?php echo get_option("siteurl")?>/wp-comments-post.php" method="post" id="commentform">
+
+
+<?php
+    
+    $captcha = $_POST["g-recaptcha-response"];
+
+    if (true) {
+
+?>
+
+<form action="<?php echo get_option("siteurl")?>/wp-comments-post.php" method="POST" id="commentform">
 
 <hr>
      <?php if( $opts['disallowAnon'] && !$user->ID ) : 
@@ -245,29 +278,32 @@ function vgb_get_sign_pg($opts)
 	else: ?>
 	
      <!-- Name/Email/Homepage section -->
-
-        <?php _e('*Name', WPVGB_DOMAIN)?>:&nbsp;&nbsp;&nbsp;
+    <div class="name-email-homepage">
+        <?php _e('*Name', WPVGB_DOMAIN);
+ 
+  ?>:&nbsp;&nbsp;&nbsp;
 
         <?php if($user->ID):?> <input type="text" name="author" id="author" value="<?php echo $user->display_name?>" disabled="disabled" size="30" maxlength="40" />
         <?php else:         ?> <input type="text" name="author" id="author" value="<?php echo $commenter['comment_author']?>" size="30" maxlength="40" />
         <?php endif; ?>
         <?php if(!$opts['disallowAnon']) _e('', WPVGB_DOMAIN); ?><br /><br />
 
-
         <?php _e('*Email', WPVGB_DOMAIN)?>:&nbsp;&nbsp;&nbsp;
 
         <?php if($user->ID):?> <input type="text" name="email" id="email" value="<?php echo $user->user_email?>" disabled="disabled" size="30" maxlength="40" />
         <?php else:         ?> <input type="text" name="email" id="email" value="<?php echo $commenter['comment_author_email']?>" size="30" maxlength="40" />
         <?php endif; ?>
-        <?php if(!$opts['disallowAnon']) _e('', WPVGB_DOMAIN); ?><br /><br />
+        <?php if(!$opts['disallowAnon']) _e('', WPVGB_DOMAIN); ?><br />
 
         <div id="rg-homepage">
+        <br />
         <?php _e('Homepage', WPVGB_DOMAIN)?>:&nbsp;&nbsp;&nbsp;
 
         <?php if($user->ID):?> <input type="text" name="url" id="url" value="<?php echo $user->user_url?>" disabled="disabled" size="30" />
         <?php else:         ?> <input type="text" name="url" id="url" value="<?php echo esc_url($commenter['comment_author_url'])?>" size="30" />
         <?php endif; ?>
         <?php if(!$opts['disallowAnon']) _e('', WPVGB_DOMAIN); ?>
+        </div>
 
            <?php
            remove_action('comment_form', 'show_subscription_checkbox');
@@ -276,42 +312,38 @@ function vgb_get_sign_pg($opts)
            global $post;
            do_action('comment_form', $post->ID);
            ?>
-           <br /><br /></div>
-
 
         <?php if( $user->ID && !$opts['disallowAnon'] ) echo __("If you'd like to customize these values, please ", WPVGB_DOMAIN) . "<b><a href=\"". wp_logout_url( $_SERVER['REQUEST_URI'] ) . "\">" . __("Logout", WPVGB_DOMAIN) . "</a></b>.<br /><br />"; ?>
      <hr />
+        </div>
         <!-- End Name/Email section -->
      
      <!-- Text section -->
      <div id="gbSignText">
        <?php _e('*Message', WPVGB_DOMAIN)?>:<br />
        <textarea name="comment" id="comment" rows="12" cols="45" style="width: 100%"></textarea><br /><br />
-       <input name="submit" type="submit" id="submit" value="<?php _e('Send', WPVGB_DOMAIN)?>" />
+       <input name="submit" type="submit" id="submit" value="<?php _e('Submit', WPVGB_DOMAIN)?>" />
        <input type="hidden" name="comment_post_ID" value="<?php echo $GLOBALS['id']?>" />
        <input type='hidden' name='redirect_to' value='<?php echo htmlspecialchars(get_permalink()) ?>' />
      </div><br />
      <!-- EndText area section -->
 
-
-
-
-
-
-<!--
-        This is a free version of <b><a href="http://jamrizzi.com/wordpress/plugins/rizzi-guestbook" target="_blank">Rizzi Guestbook</a></b>.
-        -->
-
-
-
-
-
-
+<?php
+    global $wpdb;
+    $rgb_show_powered_by_name = $wpdb->get_row("SELECT * FROM $wpdb->options WHERE option_name = 'rgb_show_powered_by'", ARRAY_A);
+    $rgb_show_powered_by_value = $rgb_show_powered_by_name['option_value'];
+    if(true) {
+      echo "Powered by <b><a href='http://software.jamrizzi.com/store/products/rizzi-guestbook/' target='_blank'>Rizzi Guestbook</a></b>.<br />&nbsp;";
+    }
+?>
 
      <?php endif; ?>
     </form>
-          
-    <?php
+
+<?php
+
+    }
+
     if( $opts['allowUploads'] ):
       ?>
       <!-- Image Upload section: -->  

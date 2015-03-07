@@ -26,7 +26,7 @@ add_filter('plugin_action_links', 'vgb_add_plugin_links', 10, 2);
 function vgb_add_plugin_links($links, $file)
 {
     if( dirname(plugin_basename( __FILE__ )) == dirname($file) )
-        $links[] = '<a href="options-general.php?page=' . "wp-vipergb" .'">' . __('Settings',WPVGB_DOMAIN) . '</a>';
+        $links[] = '<a href="options-general.php?page=' . "rizzi-guestbook" .'">' . __('Settings',WPVGB_DOMAIN) . '</a>';
     return $links;
 }
 
@@ -37,7 +37,7 @@ function vgb_add_plugin_links($links, $file)
 function vgb_admin_page()
 {
     global $vgb_name, $vgb_homepage, $vgb_version;
-    global $opt_vgb_page, $opt_vgb_style, $opt_vgb_reverse, $opt_vgb_allow_upload;
+    global $opt_vgb_page, $opt_vgb_style, $opt_vgb_reverse, $opt_vgb_allow_upload, $opt_rgb_homepage_field, $opt_rgb_captcha_key, $opt_rgb_use_captcha, $rgb_hide_value_section, $opt_rgb_sign_page, $opt_rgb_show_page, $opt_rgb_show_powered_by;
     global $opt_vgb_items_per_pg, $opt_vgb_max_upload_siz;
 	global $opt_vgb_no_anon_signers;
     global $opt_vgb_show_browsers, $opt_vgb_show_flags, $opt_vgb_show_cred_link;
@@ -51,6 +51,13 @@ function vgb_admin_page()
           update_option( $opt_vgb_style, $_POST[$opt_vgb_style] );
           update_option( $opt_vgb_items_per_pg, $_POST[$opt_vgb_items_per_pg] );
           update_option( $opt_vgb_reverse, $_POST[$opt_vgb_reverse] );
+          update_option( $opt_rgb_homepage_field, $_POST[$opt_rgb_homepage_field] );
+          update_option( $opt_rgb_show_powered_by, $_POST[$opt_rgb_show_powered_by] );
+          update_option( $opt_rgb_sign_page, $_POST[$opt_rgb_sign_page] );
+          update_option( $opt_rgb_show_page, $_POST[$opt_rgb_show_page] );
+          update_option( $rgb_hide_value_section, $_POST[$rgb_hide_value_section] );
+          update_option( $opt_rgb_use_captcha, $_POST[$opt_rgb_use_captcha] );
+          update_option( $opt_rgb_captcha_key, $_POST[$opt_rgb_captcha_key] );
           update_option( $opt_vgb_allow_upload, $_POST[$opt_vgb_allow_upload] );
           update_option( $opt_vgb_max_upload_siz, $_POST[$opt_vgb_max_upload_siz] );
 		  update_option( $opt_vgb_no_anon_signers, $_POST[$opt_vgb_no_anon_signers] );
@@ -66,81 +73,68 @@ function vgb_admin_page()
       <h2 style="clear: none">
          <?php _e('Rizzi Guestbook Options', WPVGB_DOMAIN) ?>
          <?php if( get_option($opt_vgb_page) ): ?>
-         <span style="font-size:12px;"> <a href="edit-comments.php?p=<?php echo get_option($opt_vgb_page)?>"><?php _e('Manage Entries', WPVGB_DOMAIN) ?> &raquo;</a></span>
          <?php endif;?>
       </h2>
+<hr /> 
+    <center><?php
+ $image_url = "//".$_SERVER['HTTP_HOST']."/wp-content/plugins/rizzi-guestbook/img/";
+ echo "<a href='http://software.jamrizzi.com/store/products/rizzi-guestbook/' target='_blank'><img src='".$image_url."rizzi-guestbook.png' width='100%'></a>";
+ ?><br />
+    <h2><a href="edit-comments.php?p=<?php echo get_option($opt_vgb_page)?>"><?php _e('Manage Entries', WPVGB_DOMAIN) ?> &raquo;</a></h2></center>
       
-      <?php _e('
-<hr><center>
-   <h4>If you find this plugin useful, please click <a href="http://wordpress.org/support/view/plugin-reviews/rizzi-guestbook" target="_blank">HERE</a> to give it a high rating.</h4>
-
-
-
-
-
+<hr />
+<center>
+<h1>Click the banner to upgrade to Rizzi Guestbook Pro</h1>
+<?php
+ $image_url = "//".$_SERVER['HTTP_HOST']."/wp-content/plugins/rizzi-guestbook/img/";
+ echo "<a href='http://software.jamrizzi.com/store/products/rizzi-guestbook/' target='_blank'><img src='".$image_url."rizzi-guestbook-pro.png' width='100%'></a>";
+?>
+<h2><u>Features</u></h2>
 </center>
+<h3>
+<ol>
+    <li>Add a date stamp so you know when people signed your guestbook.  There are multiple date stamp formats to choose from.</li>
+    <li>Choose how many entries are displayed on each page.</li>
+    <li>Option to list entries from oldest to newest.</li>
+    <li>Remove the user value fields for users that are already logged in.</li>
+    <li>Change the page names.</li>
+    <li>Add Google's new No Captcha reCaptcha.</li>
+    <li>Remove <i>Powered by JamRizzi Technologies</i> stamp.</li>
+    <li>Hide advertisements.</li>
+</ol>
+</h3>
+<center>
 <hr />
-<br />
-There are several Guestbook options for WordPress, but many of them are
-extremely complicated, not user friendly, have incompatibility issues, and the list goes on and on.&nbsp;
-<b>Rizzi Guestbook is different.</b> &nbsp;The purpose for this plugin was to create a
-Guestbook that is simple to administrate and easy to use, while still maintaining
-the necessary functionality a Guestbook needs. &nbsp;It is probably the easiest guestbook to use ever created. &nbsp;
-I hope you find this Guestbook useful.
-<br />
-<br />
-Rizzi Guestbook is a modified and improved version of the WP-ViperGB plugin.&nbsp;
-The plugin&#39;s listing page was beautifully redesigned, unnecessary features were
-removed to increase simplicity, mobile support was added, and many more display features have been implemented.&nbsp;It
-utilizes the built in comment feature of WordPress which makes the management of your guestbook a breeze.
-<br />&nbsp;
+<h1>Click the EYE to get eyeMessage for Windows</h1>
+<h3>Seamlessly iMessage straight from your Windows computer</h3>
+<table>
+  <tr>
+    <td>
+<?php
+ $image_url = "//".$_SERVER['HTTP_HOST']."/wp-content/plugins/rizzi-guestbook/img/";
+ echo "<a href='http://software.jamrizzi.com/store/products/eyemessage-for-windows/' target='_blank'><img src='".$image_url."imessage-for-windows.png' width='100%'></a>";
+?>
+    </td>
+    <td>
+<iframe width="640" height="360" src="https://www.youtube.com/embed/f6pNFSKq41s?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
+    </td>
+  </tr>
+</table>
+</center>
+
+
+<?php
+           _e('
 <hr />
-<br />
-<b>Instructions:</b> &nbsp;To add a guestbook to your blog, simply create a new page, select it in the first combo box below, and click "Save."', WPVGB_DOMAIN) ?><br /><br />
-
-
-
-
-    
-<!--
-        <hr />
-   <tr><td>
-<h2>This is the FREE version.  Click <a href="http://jamrizzi.com/wordpress/plugins/rizzi-guestbook" target="_blank">HERE</a> to upgrade.</h2>
-<h3>Why go premium?</h3>
-<h5>1. Removes requests for donations and ratings.</h5>
-<h5>2. Removes the free version stamp on the frontend.</h5>
-<h5>3. Adds many more display settings.</h5>
-<hr />
-   <tr><td>
-
-<h2>To help improve this plugin, click the donate button.</h2>
-   </td><td><br />
-
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank"><input type="hidden" name="cmd" value="_donations" />
-<input type="hidden" name="business" value="PUVC5R8CCHQAN" />
-<input type="hidden" name="lc" value="US" />
-<input type="hidden" name="item_name" value="JamRizzi" />
-<input type="hidden" name="currency_code" value="USD" />
-<input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted" />
-<input type="image" alt="PayPal - The safer, easier way to pay online!" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" />
-<img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" border="0" /></form>
-
-</td></tr></table>
-        -->
-
-
-
-
-
-      <?php if(!get_option($opt_vgb_hidesponsor)): ?>
-        <!-- Sponsorship message *was* here, until Automattic demanded they be removed from all plugins - see http://gregsplugins.com/lib/2011/11/26/automattic-bullies/ -->
-      <?php endif; ?>
+<h2>Instructions:</h2>
+<h4>To add a guestbook to your website, create a new page, select it in the first combo box below, and click <u>Save Settings</u>.', WPVGB_DOMAIN) ?><br /><br />
+        Click <a href='http://support.jamrizzi.com' target='_blank'>HERE</a> to get official support from JamRizzi Technologies.</h4>
       <hr />
       
-      <h4><?php _e('Main Settings', WPVGB_DOMAIN) ?>:</h4>
+      <h2><?php _e('Main Settings', WPVGB_DOMAIN) ?>:</h2>
       <form name="formOptions" method="post" action="">
 
-        <?php _e('Guestbook Page', WPVGB_DOMAIN) ?><span style="word-spacing:9px;">:&nbsp;</span>
+        <h3><?php _e('Guestbook Page', WPVGB_DOMAIN) ?><span style="word-spacing:9px;">:</span>
         <select style="width:150px;" name="<?php echo $opt_vgb_page?>">
           <?php
             $pages = get_pages(array('post_status'=>'publish,private'));  
@@ -149,11 +143,15 @@ utilizes the built in comment feature of WordPress which makes the management of
             foreach($pages as $page)
                echo '<option value="'.$page->ID.'"'. ($page->ID==$vgb_page?' selected':'').'>'.$page->post_title.'</option>'."\n";
           ?>
-        </select><br />
-
-
-        <?php _e('Display Options', WPVGB_DOMAIN) ?><span style="word-spacing:12px">:&nbsp;</span>
-        <select style="width:150px;" name="<?php echo $opt_vgb_style?>">
+        </select>
+          <br /><br />
+        <input type="checkbox" name="<?php echo $opt_vgb_no_anon_signers?>" value="1" <?php echo get_option($opt_vgb_no_anon_signers)?'checked="checked"':''?> /> <?php _e('Only Allow Registered Users',WPVGB_DOMAIN)?><br /><br />
+<?php
+     echo "<a href='http://software.jamrizzi.com/store/products/rizzi-guestbook/' target='_blank'><img src='".$image_url."pro-settings.jpg' width='100%'></a>";
+?>
+        <h3 style="display:none"> <?php _e('Entries per Page: ', WPVGB_DOMAIN)?><input type="text" size="3" name="<?php echo $opt_vgb_items_per_pg?>" value="<?php echo get_option($opt_vgb_items_per_pg) ?>" /><br /><br />
+        <?php _e('Date Stamp', WPVGB_DOMAIN) ?><span style="word-spacing:3px">:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <select style="width:53px;" name="<?php echo $opt_vgb_style?>">
           <?php
              $stylesDir = opendir(dirname(__FILE__) . "/styles");
              while ($file = readdir($stylesDir))
@@ -163,28 +161,21 @@ utilizes the built in comment feature of WordPress which makes the management of
                 echo '<option value="'.$styleName.'"'. ($styleName==get_option($opt_vgb_style)?' selected':'').'>'.$styleName.'</option>'."\n";
              }
              closedir($stylesDir);
-          ?>
-        </select><br />
 
+          ?></h3>
+        </select>
 
-        <h4><?php _e('Extra Settings', WPVGB_DOMAIN)?>:</h4>
-        <input type="text" size="3" name="<?php echo $opt_vgb_items_per_pg?>" value="<?php echo get_option($opt_vgb_items_per_pg) ?>" /> <?php _e('Entries per Page', WPVGB_DOMAIN)?><br />
-        <input type="checkbox" name="<?php echo $opt_vgb_reverse?>" value="1" <?php echo get_option($opt_vgb_reverse)?'checked="checked"':''?> /> <?php _e('List from oldest to newest', WPVGB_DOMAIN)?><br />
-        <input type="checkbox" name="<?php echo $opt_vgb_no_anon_signers?>" value="1" <?php echo get_option($opt_vgb_no_anon_signers)?'checked="checked"':''?> /> <?php _e('Only allow registered users',WPVGB_DOMAIN)?><br />
+        <h3><input type="checkbox" name="<?php echo $opt_vgb_digg_pagination?>" value="1" <?php echo get_option($opt_vgb_digg_pagination)?'checked="checked"':''?> /> <?php _e('Use Digg-style pagination', WPVGB_DOMAIN)?><br /></h3>
+        <h4>It is strongly recommended that you do not use Digg-style pagination because it is buggy. &nbsp;This option is only here to let users turn it off if it was already enabled.</h4>
         <input type="hidden" name="opts_updated" value="1" />
-        <hr />
-        It is strongly recommended that you do not use Digg-style pagination because it is buggy. &nbsp;This option is only here to let users turn it off.<br />
-        <input type="checkbox" name="<?php echo $opt_vgb_digg_pagination?>" value="1" <?php echo get_option($opt_vgb_digg_pagination)?'checked="checked"':''?> /> <?php _e('Use Digg-style pagination', WPVGB_DOMAIN)?><br />
-
-        <div class="submit"><input type="submit" name="Submit" value="<?php _e('Save',WPVGB_DOMAIN)?>" /></div>
+        <span class="submit"><input type="submit" name="Submit" value="<?php _e('Save Settings',WPVGB_DOMAIN)?>" /></div>
       </form>
-    
+    <br />    
     <hr />  
 
-This plugin was redesigned by JamRizzi.  For more information, visit <a href="http://jamrizzi.com" target="_blank">jamrizzi.com</a>.
+This plugin was created by JamRizzi Technologies. &nbsp;For more information, visit <a href="http://jamrizzi.com" target="_blank">jamrizzi.com</a>.
 
 
     <?php
 }
-
 ?>
