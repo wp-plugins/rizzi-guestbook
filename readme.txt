@@ -49,7 +49,7 @@ For a demo, click [HERE](http://demo.jamrizzi.com/rizzi-guestbook).
 
 Make sure the WP-ViperGB plugin is not installed on your site or there will be conflicts.
  
-1. Download the most recent version of [Rizzi-Guestbook](http://software.jamrizzi.com/store/products/rizzi-guestbook/).
+1. Download the most recent version of [Rizzi Guestbook](http://software.jamrizzi.com/store/products/rizzi-guestbook/).
  
 2. Login to your WordPress admin panel.
 
