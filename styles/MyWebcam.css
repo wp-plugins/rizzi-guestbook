@@ -1,0 +1,23 @@
+			.hidden {
+				display: none;
+			}
+			.visible {
+				display: block;
+			}
+			#videoContainer {
+				margin: 0px auto;
+				width: 250px;
+				height: 250px;
+				border: 10px #333 solid;
+			}
+			#videoElement {
+				width: 250px;
+				height: 250px;
+				background-color: #666;
+			}
+			.showUpload {
+				display: block;
+				width: 250px;
+				height: 250px;
+				background-color: #666;
+			}

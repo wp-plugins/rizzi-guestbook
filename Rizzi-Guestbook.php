@@ -26,6 +26,11 @@ Plugin URI: https://wordpress.org/plugins/rizzi-guestbook/
  * this program; if not, write to the Free Software Foundation, Inc., 51
  * Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
+ 
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+} // end if 
 
 global $vgb_name, $vgb_homepage, $vgb_version;
 $vgb_name               = "Rizzi Guestbook";
@@ -37,7 +42,7 @@ global $opt_vgb_page, $opt_vgb_style, $opt_vgb_items_per_pg, $opt_vgb_reverse, $
 global $opt_vgb_allow_upload, $opt_vgb_allow_upload, $opt_vgb_max_upload_siz;
 global $opt_vgb_no_anon_signers;
 global $opt_vgb_show_browsers, $opt_vgb_show_flags, $opt_vgb_show_cred_link;
-global $opt_vgb_hidesponsor, $opt_vgb_digg_pagination;
+global $opt_vgb_hidesponsor, $opt_vgb_digg_pagination, $opt_vgb_auto_approve;
 $opt_vgb_page           = 'vgb_page';
 $opt_vgb_style          = 'vgb_style';
 $opt_vgb_items_per_pg   = 'vgb_items_per_pg';
@@ -57,6 +62,7 @@ $opt_vgb_show_flags     = 'vgb_show_flags';
 $opt_vgb_show_cred_link = 'vgb_show_cred_link';
 $opt_vgb_hidesponsor    = 'vgb_hidesponsor';
 $opt_vgb_digg_pagination= 'vgb_digg_pagination';
+$opt_vgb_auto_approve   = 'vgb_auto_approve';
 
 //Load the textdomain for localization
 define('WPVGB_DOMAIN', 'wpvipergb');
@@ -65,7 +71,7 @@ load_plugin_textdomain(WPVGB_DOMAIN, false, dirname( plugin_basename(__FILE__) )
 //Include required implementation code
 require_once('_output_guestbook.php');
 require_once('_admin_menu.php');
-
+require_once('_edit_comments.php');
 
 //Hook into the user-selected Guestbook page and fill its contents with the Guestbook.
 //NOTE: If you want to manually generate a guestbook in one of your templates, simply
@@ -79,6 +85,7 @@ function vgb_replace_content($content)
     global $opt_vgb_reverse, $opt_vgb_allow_upload, $opt_vgb_items_per_pg, $opt_vgb_max_upload_siz;
 	global $opt_vgb_no_anon_signers, $opt_vgb_digg_pagination;
     global $opt_vgb_show_browsers, $opt_vgb_show_flags, $opt_vgb_show_cred_link;
+    global $opt_vgb_auto_approve;
     return vgb_GetGuestbook(array('entriesPerPg' => get_option($opt_vgb_items_per_pg),
                                   'reverseOrder' => get_option($opt_vgb_reverse),
                                   'allowUploads' => get_option($opt_vgb_allow_upload),
@@ -87,7 +94,9 @@ function vgb_replace_content($content)
                                   'showFlags'    => get_option($opt_vgb_show_flags),
                                   'showCredLink' => get_option($opt_vgb_show_cred_link),
 								  'disallowAnon' => get_option($opt_vgb_no_anon_signers),
-								  'diggPagination'=>get_option($opt_vgb_digg_pagination)));
+								  'diggPagination'=>get_option($opt_vgb_digg_pagination),
+								  'autoApprove' => get_option($opt_vgb_auto_approve)
+								  ));
                                         
 }
 
@@ -105,14 +114,16 @@ function suppress_comments( $file )
 
 //Add some styles (make sure they come after the ecu stylesheet, so we can override)
 //REMOVED ECU as a prerequisite for the below two wp_enqueue_style calls
-add_action('wp_enqueue_scripts', 'vgb_enqueue_styles');
-function vgb_enqueue_styles()
+add_action('wp_enqueue_scripts', 'vgb_enqueue_styles_and_scripts');
+function vgb_enqueue_styles_and_scripts()
 {
     global $vgb_version, $opt_vgb_style;
     wp_enqueue_style('WP-ViperGB-Default', vgb_get_data_url().'', array(), $vgb_version );
     $currentStyle = get_option($opt_vgb_style);
     if( $currentStyle != 'Default' )
         wp_enqueue_style('WP-ViperGB-'.$currentStyle, vgb_get_data_url().'styles/'.$currentStyle.".css", array('WP-ViperGB-Default'), $vgb_version );
+    wp_enqueue_style('WP-ViperGB-MyWebcam.css', vgb_get_data_url().'styles/MyWebcam.css', array(), $vgb_version);
+    wp_enqueue_script('WP-ViperGB-MyWebcam.js', vgb_get_data_url().'js/MyWebcam.js', array(), $vgb_version);
 }
 
 
