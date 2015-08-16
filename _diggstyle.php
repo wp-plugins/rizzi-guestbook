@@ -1,4 +1,10 @@
 <?php
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+} // end if
+
+
 /*
  * Pagination function to return the pagination string
  * using Digg-Style Pagination

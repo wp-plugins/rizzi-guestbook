@@ -1,5 +1,11 @@
 <?php
 
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+} // end if
+
+
 //Set default options.
 add_option($opt_vgb_items_per_pg, 10);
 add_option($opt_vgb_max_upload_siz, 50);
@@ -9,6 +15,8 @@ add_option($opt_vgb_show_flags, true);
 add_option($opt_vgb_style, "Default");
 add_option($opt_vgb_show_cred_link, false);
 add_option($opt_vgb_digg_pagination, false);
+add_option($opt_vgb_allow_upload, false);
+add_option($opt_vgb_auto_approve, false);
 
 /*
  * Tell WP about the Admin page
@@ -42,6 +50,8 @@ function vgb_admin_page()
 	global $opt_vgb_no_anon_signers;
     global $opt_vgb_show_browsers, $opt_vgb_show_flags, $opt_vgb_show_cred_link;
     global $opt_vgb_hidesponsor, $opt_vgb_digg_pagination;
+    global $opt_vgb_auto_approve;
+
     ?>
     <div class="wrap">
       <?php
@@ -65,6 +75,8 @@ function vgb_admin_page()
           update_option( $opt_vgb_show_flags, $_POST[$opt_vgb_show_flags] );
           update_option( $opt_vgb_show_cred_link, $_POST[$opt_vgb_show_cred_link] );
 		  update_option( $opt_vgb_digg_pagination, $_POST[$opt_vgb_digg_pagination] );
+		  update_option( $opt_vgb_auto_approve, $_POST[$opt_vgb_auto_approve] );
+
           ?><div class="updated"><p><strong><?php _e('Options saved.', WPVGB_DOMAIN ); ?></strong></p></div><?php
       }
       if( isset($_REQUEST[$opt_vgb_hidesponsor]) )
@@ -167,6 +179,9 @@ function vgb_admin_page()
 
         <h3><input type="checkbox" name="<?php echo $opt_vgb_digg_pagination?>" value="1" <?php echo get_option($opt_vgb_digg_pagination)?'checked="checked"':''?> /> <?php _e('Use Digg-style pagination', WPVGB_DOMAIN)?><br /></h3>
         <h4>It is strongly recommended that you do not use Digg-style pagination because it is buggy. &nbsp;This option is only here to let users turn it off if it was already enabled.</h4>
+        <input type="checkbox" name="<?php echo $opt_vgb_allow_upload?>" value="1" <?php echo get_option($opt_vgb_allow_upload)?'checked="checked"':''?> /> <?php _e('Allow users to upload images', WPVGB_DOMAIN)?><br />
+        <input type="checkbox" name="<?php echo $opt_vgb_auto_approve?>" value="1" <?php echo get_option($opt_vgb_auto_approve)?'checked="checked"':''?> /> <?php _e('Auto approve guestbook entries', WPVGB_DOMAIN)?><br />
+        
         <input type="hidden" name="opts_updated" value="1" />
         <span class="submit"><input type="submit" name="Submit" value="<?php _e('Save Settings',WPVGB_DOMAIN)?>" /></div>
       </form>

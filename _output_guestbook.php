@@ -1,9 +1,16 @@
 <?php
+
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+} // end if 
+
 //Include the comment-upload handler plugin
 //ECU Code require_once('easy-comment-uploads/main.php');
 //Include the diggstyle pagination
 require_once('_diggstyle.php');
 
+require_once('_webcam.php');
 
 /**
   * This is the only function you need to generate a WP-Viper Guestbook - simply
@@ -25,7 +32,8 @@ function vgb_GetGuestbook( $opts=array() )
         'hideCred'     => false,    //Omit "Powered by WP-ViperGB" (please don't though :))
         'showCredLink' => false,    //Include a link to the project page in the "Powered by WP-ViperGP" (would be appreciated :))
         'disallowAnon' => false,	//Don't allow anonymous signatures (aka only logged-in users can sign)
-        'diggPagination'=>false		//Use Digg-style pagination (rather than this plugin's original style)
+        'diggPagination'=>false,	//Use Digg-style pagination (rather than this plugin's original style)
+        'autoApprove' => false,     //auto approve guestbook entries
          );       
     $opts = wp_parse_args( $opts, $defaults );
 
@@ -197,7 +205,11 @@ function vgb_get_listing_pg($opts)
 <b><?php echo $comment->comment_author?></b>&nbsp;<?php edit_comment_link('<i><small>Edit</small></i>', '');?>
 
 <?php
-       if( $comment->comment_approved == 1 ) comment_text();
+		if( $opts['autoApprove'] == 1 || $comment->comment_approved == 1 ) {
+				vgb_my_comment_image($comment);
+				comment_text(); 
+		}
+
        else                                  echo __('<br />This entry is awaiting moderation.<br /><br />',WPVGB_DOMAIN);
        ?>
 
@@ -317,6 +329,21 @@ function vgb_get_sign_pg($opts)
      <hr />
         </div>
         <!-- End Name/Email section -->
+        <!-- webcam image section -->
+     <?php
+    //echo "allowUploads='" . $opts['allowUploads'] . "'";
+    if( $opts['allowUploads'] ):
+      ?>
+      <!-- Image Upload section: -->  
+      <div id="gbSignUpload">  
+        <?php
+        vgb_my_webcam_image();
+        ?>
+      </div>       
+      <!-- End Image Upload section -->
+    <?php endif;?>  
+    <!-- end webcam image section -->
+    
      
      <!-- Text section -->
      <div id="gbSignText">
@@ -368,5 +395,8 @@ function vgb_get_sign_pg($opts)
    ob_end_clean();
    return $output_string;
 }
+
+add_action('wp_insert_comment', 'save_comment_image', 99, 2);
+
 
 ?>
